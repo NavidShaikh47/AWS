@@ -1,11 +1,11 @@
-FROM python:3.9
- 
-WORKDIR /code
- 
-COPY ./requirements.txt /code/requirements.txt
- 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
- 
-COPY ./app /code/app
+docker build -t fastapi-image .
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 045996574415.dkr.ecr.ap-south-1.amazonaws.com
+
+docker build -t fastapi-image .
+
+docker tag fastapi-image:latest 045996574415.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
+
+docker push 045996574415.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
+
+docker run -p 80:80 -i fastapi-image
