@@ -8,4 +8,4 @@ docker tag fastapi-image:latest 045996574415.dkr.ecr.ap-south-1.amazonaws.com/ne
 
 docker push 045996574415.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
 
-docker run -p 80:80 -i fastapi-image
+nohup docker run -p 80:80 -i fastapi-image
