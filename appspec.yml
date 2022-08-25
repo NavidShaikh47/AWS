@@ -6,8 +6,8 @@ files:
 hooks:
   BeforeInstall:
     - location: install_dependencies
-      timeout: 10
+      timeout: 100
       runas: root
     - location: start_server
-      timeout: 10
+      timeout: 100
       runas: root
