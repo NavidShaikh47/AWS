@@ -5,7 +5,7 @@ files:
     destination: /var/www/html/
 hooks:
   BeforeInstall:
-    - location: Jenkinsfile
+    - location: main
       timeout: 110
       runas: root
     - location: install_dependencies
