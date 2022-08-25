@@ -8,22 +8,22 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker build -t fastapi-image .'
+                sh 'docker build -t newrepo .'
             }
         }
         stage('Pushing to ECR') {
             steps{  
                 script {
                     sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 045996574415.dkr.ecr.ap-south-1.amazonaws.com"
-                    sh "docker build -t newrepo-image ."
-                    sh "docker tag newrepo-image:latest 045996574415.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest"
+                    sh "docker build -t newrepo ."
+                    sh "docker tag newrepo:latest 045996574415.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest"
                     sh "docker push 045996574415.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest"
                 }
             }
         }
         stage('Test') {
             steps {
-                sh 'nohup docker run -p 80:80 -i newrepo-image > my.log 2>&1 & '
+                sh "nohup docker run -p 80:80 -i newrepo > my.log 2>&1 &"
             }
         }
     }
