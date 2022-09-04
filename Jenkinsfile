@@ -21,5 +21,12 @@ pipeline {
                 }
             }
         }
+        stage('Upload') {
+            steps {
+                s3Upload(file:'file.txt', bucket:'new-bucker-aamiz-2', path:'/var/lib/jenkins/workspace/project-1/file.txt')
+            }
+        }
     }
 }
+
+
