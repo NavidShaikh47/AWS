@@ -3,5 +3,4 @@
     "name": "task-def-1",
     "imageUri": "045996574415.dkr.ecr.us-east-1.amazonaws.com/apache-image:latest"
   }
-
 }
