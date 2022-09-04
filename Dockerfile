@@ -1,7 +1,11 @@
-FROM python:3.9
+FROM amazonlinux:latest
 
-WORKDIR /code
+RUN yum -y update && \
+yum -y install httpd && \
+yum clean all
 
-COPY ./requirements.txt /code/requirements.txt
+COPY index.html /var/www/html/index.html
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+EXPOSE 80
+
+ENTRYPOINT /usr/sbin/httpd -DFOREGROUND
