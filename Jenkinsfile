@@ -25,6 +25,7 @@ pipeline {
             steps {
                 sh "nohup docker run -p 80:80 -i image1 > my.log 2>&1 &"
             }
+            
         }
     }
 }
